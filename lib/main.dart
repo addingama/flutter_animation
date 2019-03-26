@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
-import 'src/App.dart';
+import 'src/app.dart';
+
+import 'package:flutter/rendering.dart';
+
 
 void main() {
+  debugPaintBaselinesEnabled = true;
+
   runApp(App());
 }
