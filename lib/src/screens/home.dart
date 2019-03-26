@@ -32,10 +32,10 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   onTap() {
     if (catController.status == AnimationStatus.completed) {
       catController.reverse();
-    } else if (catController.status ==AnimationStatus.dismissed) { // animation still in the begining
+    } else if (catController.status == AnimationStatus.dismissed) {
+      // animation still in the begining
       catController.forward();
     }
-    
   }
 
   Widget build(BuildContext context) {
@@ -60,6 +60,14 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
         );
       },
       child: Cat(), // prevent recreate the Cat again and again
+    );
+  }
+
+  Widget buildBox() {
+    return Container(
+      width: 200.0,
+      height: 200.0,
+      color: Colors.brown,
     );
   }
 }
