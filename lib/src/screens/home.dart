@@ -27,7 +27,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       end: pi * 0.65,
     ).animate(CurvedAnimation(
       parent: boxController,
-      curve: Curves.linear,
+      curve: Curves.easeInOut,
     ));
 
     catController = AnimationController(
@@ -56,6 +56,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   onTap() {
+    boxController.stop();
     if (catController.status == AnimationStatus.completed) {
       catController.reverse();
     } else if (catController.status == AnimationStatus.dismissed) {
@@ -77,6 +78,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
               buildCatAnimation(),
               buildBox(),
               buildLeftFlap(),
+              buildRightFlap(),
             ],
           ),
         ),
@@ -126,6 +128,27 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
         },
       ),
       left: 3.0,
+    );
+  }
+
+  Widget buildRightFlap() {
+    return Positioned(
+      child: AnimatedBuilder(
+        animation: boxAnimation,
+        child: Container(
+          height: 10.0,
+          width: 125.0,
+          color: Colors.brown,
+        ),
+        builder: (context, child) {
+          return Transform.rotate(
+            child: child,
+            alignment: Alignment.topRight,
+            angle: -boxAnimation.value,
+          );
+        },
+      ),
+      right: 3.0,
     );
   }
 }
