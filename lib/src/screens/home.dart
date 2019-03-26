@@ -27,6 +27,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
         parent: catController,
       ),
     );
+
+
+    catController.forward();
   }
 
   Widget build(BuildContext context) {
