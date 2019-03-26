@@ -14,12 +14,12 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
   initState() {
     super.initState();
     catController = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: Duration(milliseconds: 200),
       vsync: this,
     );
 
     catAnimation = Tween(
-      begin: -50.0,
+      begin: -35.0,
       end: -80.0,
     ).animate(
       CurvedAnimation(
@@ -48,8 +48,8 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
           child: Stack(
             overflow: Overflow.visible,
             children: <Widget>[
-              buildBox(),
               buildCatAnimation(),
+              buildBox(),
             ],
           ),
         ),
