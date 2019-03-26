@@ -20,7 +20,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
 
     catAnimation = Tween(
       begin: -50.0,
-      end: 100.0,
+      end: -80.0,
     ).animate(
       CurvedAnimation(
         curve: Curves.easeIn,
@@ -46,10 +46,10 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
       body: GestureDetector(
         child: Center(
           child: Stack(
+            overflow: Overflow.visible,
             children: <Widget>[
               buildBox(),
               buildCatAnimation(),
-              
             ],
           ),
         ),
