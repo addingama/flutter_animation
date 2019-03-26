@@ -18,7 +18,7 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
     super.initState();
 
     boxController = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: Duration(milliseconds: 300),
       vsync: this, // dont forget with TickerProviderStateMixin
     );
 
@@ -47,7 +47,9 @@ class HomeState extends State<Home> with TickerProviderStateMixin {
 
     boxAnimation.addStatusListener((status) {
       if (status ==AnimationStatus.completed) {
-        boxController.repeat();
+        boxController.reverse();
+      } else if (status == AnimationStatus.dismissed) {
+        boxController.forward();
       }
     });
     boxController.forward();
